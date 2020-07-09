@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
 public class Logic3TTest {
 
     @Test
-    public void whenHasXWinner() {
+    public void whenHasXWin() {
         Figure3T[][] table = {
                 {new Figure3T(true, false), new Figure3T(), new Figure3T()},
                 {new Figure3T(), new Figure3T(true, false), new Figure3T()},
@@ -33,7 +33,7 @@ public class Logic3TTest {
     }
 
     @Test
-    public void whenHasXHorizontalWinner() {
+    public void whenHasXHorizontalWin() {
         Figure3T[][] table = {
                 {new Figure3T(), new Figure3T(), new Figure3T()},
                 {new Figure3T(true, false), new Figure3T(true, false), new Figure3T(true, false)},
@@ -44,7 +44,7 @@ public class Logic3TTest {
     }
 
     @Test
-    public void whenHasXVerticalWinner() {
+    public void whenHasXVerticalWin() {
         Figure3T[][] table = {
                 {new Figure3T(), new Figure3T(true, false), new Figure3T()},
                 {new Figure3T(), new Figure3T(true, false), new Figure3T()},
@@ -55,7 +55,7 @@ public class Logic3TTest {
     }
 
     @Test
-    public void whenHasXBackDiagonalWinner() {
+    public void whenHasXBackDiagonalWin() {
         Figure3T[][] table = {
                 {new Figure3T(), new Figure3T(), new Figure3T(true, false)},
                 {new Figure3T(), new Figure3T(true, false), new Figure3T()},
@@ -66,7 +66,7 @@ public class Logic3TTest {
     }
 
     @Test
-    public void whenHasOWinner() {
+    public void whenHasOWin() {
         Figure3T[][] table = {
                 {new Figure3T(true, false), new Figure3T(), new Figure3T()},
                 {new Figure3T(true, false), new Figure3T(true, false), new Figure3T()},

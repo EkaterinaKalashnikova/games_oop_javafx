@@ -1,5 +1,6 @@
 package ru.job4j.tictactoe;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -38,8 +39,11 @@ public class Logic3T {
 
     public boolean hasGap() {
         boolean result = true;
-        return Stream.of(isWin())
+       /** return Stream.of(isWin())
                 .anyMatch(Figure3T -> Stream.of(isWin())
-                        .allMatch(Predicate.isEqual(table)));
+                        .allMatch(Predicate.isEqual(table)));*/
+        return Stream.of(table)
+                .flatMap(Arrays::stream)
+                .allMatch(Object -> Object.hasMarkX() || Object.hasMarkO());
     }
 }
