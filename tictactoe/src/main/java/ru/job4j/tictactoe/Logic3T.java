@@ -26,21 +26,28 @@ public class Logic3T {
         return result;
     }
 
-    public boolean isWin() {
-        return this.fillBy(Objects::nonNull ,0 ,0 ,1 ,0) ||
-                this.fillBy(Objects::nonNull,0 ,0 ,0 ,1) ||
-                this.fillBy(Objects::nonNull ,0 ,0 ,1 ,1) ||
-                this.fillBy(Objects::nonNull ,0 ,1 ,1 ,0) ||
-                this.fillBy(Objects::nonNull ,0 ,2 ,1 ,0) ||
-                this.fillBy(Objects::nonNull ,1 ,0 ,0 ,1) ||
-                this.fillBy(Objects::nonNull,2 ,0 ,0 ,1) ||
-                this.fillBy(Objects::nonNull ,this.table.length-1 ,0 ,-1 ,1);
+    public boolean isWinnerX() {
+        return this.isWin(Figure3T::hasMarkX);
+    }
+
+    public boolean isWinnerO() {
+        return this.isWin(Figure3T::hasMarkO);
+    }
+
+    public boolean isWin(Predicate <Figure3T> predicate) {
+         return this.fillBy(predicate,0 ,0 ,1 ,0) ||
+                this.fillBy(predicate,0 ,0 ,0 ,1) ||
+                this.fillBy(predicate,0 ,0 ,1 ,1) ||
+                this.fillBy(predicate,0 ,1 ,1 ,0) ||
+                this.fillBy(predicate,0 ,2 ,1 ,0) ||
+                this.fillBy(predicate,1 ,0 ,0 ,1) ||
+                this.fillBy(predicate,2 ,0 ,0 ,1) ||
+                this.fillBy(predicate,this.table.length-1 ,0 ,-1 ,1);
          }
 
     public boolean hasGap() {
-        boolean result = true;
-        return Stream.of(table)
+        return !Stream.of(table)
                 .flatMap(Arrays::stream)
-                .allMatch(Object -> Object.hasMarkX() || Object.hasMarkO());
+                .allMatch(cell -> cell.hasMarkX() || cell.hasMarkO());
     }
 }

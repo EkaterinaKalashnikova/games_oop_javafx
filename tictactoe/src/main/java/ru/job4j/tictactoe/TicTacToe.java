@@ -16,6 +16,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
+import java.util.function.Predicate;
+
 public class TicTacToe extends Application {
     private static final String JOB4J = "Крестики-нолики www.job4j.ru";
     private final int size = 3;
@@ -60,9 +62,9 @@ public class TicTacToe extends Application {
     }
 
     private void checkWinner() {
-        if (this.logic.isWin()) {
+        if (this.logic.isWinnerO()) {
             this.showAlert("Победили Крестики! Начните новую Игру!");
-        } else if (this.logic.isWin()) {
+        } else if (this.logic.isWinnerX()) {
             this.showAlert("Победили Нолики! Начните новую Игру!");
         }
     }
@@ -97,7 +99,7 @@ public class TicTacToe extends Application {
                             this.buildMarkO(rect.getX(), rect.getY(), 50)
                     );
                 }
-                this.checkWinner();
+               this.checkWinner();
                 this.checkState();
             }
         };
